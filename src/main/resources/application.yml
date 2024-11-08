@@ -1,0 +1,13 @@
+pc-miler:
+  api:
+    url: https://pcmiler.alk.com/apis/rest/v1.0/Service.svc
+    key: KEY
+
+server:
+  port: 1000
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/GeoData
+      uuid-representation: standard
