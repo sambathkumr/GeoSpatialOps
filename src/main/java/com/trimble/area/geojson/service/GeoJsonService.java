@@ -37,11 +37,10 @@ public class GeoJsonService {
 
 
   public void mergeGeoJsons() {
-//    String states =
-//        "AL,AK,AZ,AR,CA,CO,CT,DE,FL,GA,HI,ID,IL,IN,IA,KS,KY,LA,ME,MD,MA,MI,MN,MS,MO,MT,NE,NV,NH,NJ,NM,NY,NC,ND,OH,OK,OR,PA,RI,SC,SD,TN,TX,UT,VT,VA,WA,WV,WI,WY";
-    String states =
-        "AL";
-    var geoDataList = pcMilerClient.getStatesPolygon(token, states);
+    String statesCa ="AB,BC,MB,NB,NL,NS,NT,NU,ON,PE,QC,SK,YT";
+    String statesUs =
+        "AL,AK,AZ,AR,CA,CO,CT,DE,FL,GA,HI,ID,IL,IN,IA,KS,KY,LA,ME,MD,MA,MI,MN,MS,MO,MT,NE,NV,NH,NJ,NM,NY,NC,ND,OH,OK,OR,PA,RI,SC,SD,TN,TX,UT,VT,VA,WA,WV,WI,WY";
+    var geoDataList = pcMilerClient.getStatesPolygon(token, statesUs);
     List<Geometry> geometries = geoDataList.parallelStream()
         .map(geoData -> {
           try {
@@ -82,7 +81,11 @@ public class GeoJsonService {
   }
 
   @SneakyThrows
-  void createGeoJson(List<MapsPolygon> geoDataList) {
+  void createGeoJson() {
+    String statesCa ="AB,BC,MB,NB,NL,NS,NT,NU,ON,PE,QC,SK,YT";
+    String statesUs =
+        "AL,AK,AZ,AR,CA,CO,CT,DE,FL,GA,HI,ID,IL,IN,IA,KS,KY,LA,ME,MD,MA,MI,MN,MS,MO,MT,NE,NV,NH,NJ,NM,NY,NC,ND,OH,OK,OR,PA,RI,SC,SD,TN,TX,UT,VT,VA,WA,WV,WI,WY";
+    var geoDataList = pcMilerClient.getStatesPolygon(token, statesUs);
     for (MapsPolygon geoData : geoDataList) {
       System.out.println(geoData.getName() + geoData.getCode());
       Geometry geometry = wktReader.read(geoData.getPolygon());
