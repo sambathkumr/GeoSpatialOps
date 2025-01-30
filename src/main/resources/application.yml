@@ -1,7 +1,7 @@
 pc-miler:
   api:
     url: https://pcmiler.alk.com/apis/rest/v1.0/Service.svc
-    key: 0D8BA43647605743A5FB4B225664EF0F
+    key: KEY
 
 server:
   port: 1000
